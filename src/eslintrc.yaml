@@ -1,0 +1,206 @@
+parser: '@typescript-eslint/parser'
+parserOptions:
+  sourceType: module
+  project: 'tsconfig.json'
+
+settings:
+  import/resolver:
+    ts:
+      alwaysTryTypes: true
+    node:
+      extensions:
+        - .js
+        - .ts
+
+plugins:
+  - import
+  - unicorn
+  - promise
+  - eslint-comments
+  - sort-class-members
+  - '@typescript-eslint'
+
+extends:
+  - airbnb-base
+  - 'plugin:promise/recommended'
+  # prettier configs must be last
+  - prettier
+  - 'prettier/@typescript-eslint'
+
+rules:
+  curly:
+    - error
+    - all
+    # NOTE: see typescript plugin
+  # lines-between-class-members:
+  #   - error
+  #   - always
+  #   - exceptAfterSingleLine: true
+  prefer-destructuring: off
+  quotes:
+    - warn
+    - single
+    - avoidEscape: true
+      allowTemplateLiterals: false
+
+  import/extensions:
+    - error
+    - always
+    # - ignorePackages
+  import/group-exports: error
+  import/no-commonjs: warn
+  # import/no-default-export: warn
+  import/no-deprecated: warn
+  import/prefer-default-export: off
+  import/no-unused-modules: warn
+  import/order:
+    - warn
+    - groups:
+        - builtin
+        - - external
+          - internal
+        - parent
+        - - index
+          - sibling
+        - object
+      alphabetize:
+        order: asc
+        caseInsensitive: true
+      newlines-between: always
+
+  unicorn/better-regex: warn
+  unicorn/catch-error-name: warn
+  unicorn/consistent-destructuring: warn
+  unicorn/consistent-function-scoping: off
+  unicorn/custom-error-definition: error
+  unicorn/empty-brace-spaces: off
+  unicorn/error-message: error
+  unicorn/escape-case: warn
+  unicorn/expiring-todo-comments: off
+  unicorn/explicit-length-check: error
+  unicorn/filename-case:
+    - warn
+    - cases:
+        kebabCase: true
+        pascalCase: true
+  unicorn/import-index: off # NOTE: redundant -- eslint-plugin-import
+  unicorn/import-style: off
+  unicorn/new-for-builtins: error
+  unicorn/no-abusive-eslint-disable: off # NOTE: redundant -- eslint-plugin-eslint-comments
+  unicorn/no-array-callback-reference: off
+  # unicorn/no-array-push-push: warn
+  unicorn/no-array-reduce: off
+  unicorn/no-console-spaces: warn
+  unicorn/no-for-loop: error
+  unicorn/no-hex-escape: error
+  unicorn/no-instanceof-array: error
+  unicorn/no-keyword-prefix: off
+  unicorn/no-lonely-if: warn
+  unicorn/no-nested-ternary: warn
+  unicorn/no-new-array: error
+  unicorn/no-new-buffer: error
+  unicorn/no-null: warn
+  unicorn/no-object-as-default-parameter: error
+  unicorn/no-process-exit: warn
+  # unicron/no-this-assignment: error
+  unicorn/no-unreadable-array-destructuring: warn
+  unicorn/no-unsafe-regex: warn
+  unicorn/no-unused-properties: warn
+  unicorn/no-useless-undefined: off
+  unicorn/no-zero-fractions: warn
+  unicorn/number-literal-case: warn
+  unicorn/numeric-separators-style: warn
+  unicorn/prefer-add-event-listener: warn
+  unicorn/prefer-array-find: error
+  unicorn/prefer-array-flat-map: warn
+  unicorn/prefer-array-index-of: error
+  unicorn/prefer-array-some: error
+  unicorn/prefer-date-now: error
+  unicorn/prefer-default-parameters: warn
+  unicorn/prefer-dom-node-append: warn
+  unicorn/prefer-dom-node-dataset: warn
+  unicorn/prefer-dom-node-remove: warn
+  unicorn/prefer-dom-node-text-content: warn
+  unicorn/prefer-includes: error
+  unicorn/prefer-keyboard-event-key: warn
+  unicorn/prefer-math-trunc: error
+  unicorn/prefer-modern-dom-apis: error
+  unicorn/prefer-negative-index: error
+  unicorn/prefer-number-properties: error
+  unicorn/prefer-optional-catch-binding: warn
+  unicorn/prefer-query-selector: warn
+  unicorn/prefer-reflect-apply: error
+  unicorn/prefer-regexp-test: error
+  unicorn/prefer-set-has: warn
+  unicorn/prefer-spread: error
+  unicorn/prefer-string-replace-all: warn
+  unicorn/prefer-string-slice: error
+  unicorn/prefer-string-starts-ends-with: error
+  unicorn/prefer-string-trim-start-end: error
+  unicorn/prefer-ternary: warn
+  unicorn/prefer-type-error: error
+  unicorn/prevent-abbreviations: off
+  unicorn/string-content: off
+  unicorn/throw-new-error: error
+
+  eslint-comments/disable-enable-pair:
+    - error
+    - allowWholeFile: true
+  eslint-comments/no-aggregating-enable: error
+  eslint-comments/no-duplicate-disable: error
+  eslint-comments/no-restricted-disable: off
+  eslint-comments/no-unlimited-disable: error
+  eslint-comments/no-unused-disable: warn
+  eslint-comments/no-unused-enable: warn
+  eslint-comments/no-use: off
+  eslint-comments/requeire-description: off
+
+  sort-class-members/sort-class-members:
+    - warn
+    - accessorPairPositioning: getThenSet
+      order:
+        - '[properties]'
+        - constructor
+        - '[accessor-pairs]'
+        - '[methods]'
+        - '[static-properties]'
+        - '[static-methods]'
+        - '[everything-else]'
+      stopAfterFirstProblem: true
+
+  dot-notation: off
+  '@typescript-eslint/dot-notation': error
+  lines-between-class-members: off
+  '@typescript-eslint/lines-between-class-members':
+    - warn
+    - always
+    - exceptAfterSingleLine: true
+      exceptAfterOverloading: true
+  no-array-constructor: off
+  '@typescript-eslint/no-array-constructor': error
+  no-dupe-class-members: off
+  '@typescript-eslint/no-dupe-class-members': error
+  no-duplicate-imports: 'off'
+  '@typescript-eslint/no-duplicate-imports': error
+  no-empty-function: off
+  '@typescript-eslint/no-empty-function': warn
+  no-invalid-this: off
+  '@typescript-eslint/no-invalid-this': error
+  no-redeclare: off
+  '@typescript-eslint/no-redeclare': error
+  no-shadow: off
+  '@typescript-eslint/no-shadow': error
+  no-throw-literal: off
+  '@typescript-eslint/no-throw-literal': error
+  no-unused-expressions: off
+  '@typescript-eslint/no-unused-expressions': error
+  no-unused-vars: off
+  '@typescript-eslint/no-unused-vars': error
+  no-use-before-define: off
+  '@typescript-eslint/no-use-before-define': error
+  no-useless-constructor: off
+  '@typescript-eslint/no-useless-constructor': error
+  return-await: off
+  '@typescript-eslint/return-await':
+    - error
+    - in-try-catch
